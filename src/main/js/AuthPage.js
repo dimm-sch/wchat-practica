@@ -25,7 +25,7 @@ const AuthPage = (props) => {
         e.preventDefault();
         axios
             .post(`${baseUrl}/login`, {username, secret})
-            .then((r) => props.onAuth({...r.data, secret})) // NOTE: over-ride secret
+            .then((r) => props.onAuth({...r.data, secret}))
             .catch((e) => console.log(JSON.stringify(e.response.data)));
     };
 
@@ -39,7 +39,7 @@ const AuthPage = (props) => {
                 first_name,
                 last_name,
             })
-            .then((r) => props.onAuth({...r.data, secret})) // NOTE: over-ride secret
+            .then((r) => props.onAuth({...r.data, secret}))
             .catch((e) => console.log(JSON.stringify(e.response.data)));
     };
 
@@ -48,11 +48,6 @@ const AuthPage = (props) => {
             <div className="card">
                 {/* Login Form */}
                 <Box component="form" onSubmit={onLogin} noValidate sx={{mt: 1}}>
-                    {/*{auth.errorMessage &&*/}
-                    {/*    <Typography variant="body1" color="error" justifyContent="flex-start">*/}
-                    {/*      {auth.errorMessage}*/}
-                    {/*    </Typography>*/}
-                    {/*}*/}
                     <Typography component="h2" variant="h5" color="white">
                         Sign In
                     </Typography>
