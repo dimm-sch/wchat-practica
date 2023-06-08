@@ -1,0 +1,5 @@
+.idea/
+.env
+target/
+src/**/resources/static/built/
+node_modules/
