@@ -1,22 +1,15 @@
 package com.practica.wchat;
 
-import java.util.Map;
-
 import com.practica.wchat.dto.LoginRequest;
 import com.practica.wchat.entity.User;
 import com.practica.wchat.service.AuthenticationService;
 import org.json.JSONObject;
-import org.springframework.http.*;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.http.MediaType;
+import org.springframework.http.RequestEntity;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
-
-import javax.servlet.http.HttpServletRequest;
 
 @RestController
 public class UserController {
@@ -52,8 +45,7 @@ public class UserController {
 
     @CrossOrigin
     @RequestMapping(path = "/signup", method = RequestMethod.POST)
-    public ResponseEntity<?> signUp(@RequestBody User user, RequestEntity<?> entity, Map<String, Object> map,
-                                    HttpServletRequest httpServletRequest) {
+    public ResponseEntity<?> signUp(@RequestBody User user) {
         String url = "https://api.chatengine.io/users";
         JSONObject requestBody = new JSONObject();
         requestBody.put("username", user.getUsername());
